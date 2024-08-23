@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import {deleteTodoItem } from  '../redux/todoListReducer'
+import {deleteTodoItem } from  '../redux/todoListReducer';
+import { updateTodoItem } from  '../redux/todoListReducer'
 
-function TodoList() {
+function TodoList({item, setItem}) {
     const todoList = useSelector(state => state.todoList);
 
     const dispatch = useDispatch() ;
@@ -14,6 +15,7 @@ function TodoList() {
             
                 <li key={item.id}>{item.todoItem}</li>
                 <button onClick={()=> dispatch(deleteTodoItem(item.id))}>delete</button>
+                <button onClick={()=> dispatch(updateTodoItem(item.id))}>Update</button>
                 </div>
             ))}
         </ul>
